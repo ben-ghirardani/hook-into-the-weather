@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import SearchBox from './components/SearchBox/SearchBox.jsx'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
   return (
     <div>
       {test}
-      {/* search box */}
+      <SearchBox/>
     </div>
   );
 }

@@ -6,9 +6,14 @@ export default function SearchBox() {
   const [ text, setText ] = useState("");
 
   return (
-    <div>
-      {/* text box, onChange updates text variable which is matched against the array of locations to produce an autofill list */}
-    </div>
+    <input
+      type="text"
+      value={text}
+      onChange={setText}
+    >
+      {/* text box, onChange calls setText to update text variable which is matched against array of locations to 
+      produce an autofill list */}
+    </input>
   )
 
 };
