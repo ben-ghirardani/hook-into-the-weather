@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
-import SearchBox from './components/SearchBox/SearchBox.jsx'
 
 function App() {
 
-  const [ test, setTest ] =  useState("Test info")
+  const [ data, setData ] =  useState("Test data")
+
+  async function fetchData(url) {
+    const response = await fetch(url);
+    const json = await response.json();
+    setData(json);
+  }
+
+  // useEffect called on initial render? Need to call when search data is ready.
+  useEffect(() => {fetchData()},[]);
 
   return (
     <div>
-      {test}
-      <SearchBox/>
+      
     </div>
   );
 }
