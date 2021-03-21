@@ -11,6 +11,10 @@ export default function SearchBox() {
     setText(e.currentTarget.value);
   };
 
+  const submitText = () => {
+    console.log("add functionality here!")
+  };
+
   // function to check current text against array of locations
   // call it in onChange above
 
@@ -18,7 +22,7 @@ export default function SearchBox() {
 
   return (
     <div className="search-box">
-      <form onSubmit={console.log("add functionality here!")}>
+      <form onSubmit={console.log(submitText)}>
         <input
           type="text"
           value={text}
