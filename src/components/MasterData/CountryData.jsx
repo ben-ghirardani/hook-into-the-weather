@@ -1,5 +1,4 @@
 // sort by Location for results of free text box
-// could split into smaller arrays based on country / continent for quicker search?
 
 const CountryData = [
   {ID:1,CountryCode:"DZ",Location:"Algeria",WOEID:23424740,Continent:"Africa",Country:"Algeria"},
