@@ -17,7 +17,7 @@ export default function SearchBox() {
   // is there too much happening in SearchBox? Not reusable. Pull some of the functionality out and into app?
 
   return (
-    <>
+    <div className="search-box">
       <input
         type="text"
         value={text}
@@ -27,7 +27,7 @@ export default function SearchBox() {
         type="submit"
         value="Go!"
       />
-    </>
+    </div>
   )
 
 };

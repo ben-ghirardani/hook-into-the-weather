@@ -3,6 +3,7 @@ import './LandingPage.css';
 import Cloud from '../Images/Cloud.png';
 import HeavyCloud from '../Images/HeavyCloud.png';
 import { motion } from 'framer-motion';
+import SearchBox from '../SearchBox/SearchBox.jsx';
 
 function LandingPage() {
 
@@ -30,6 +31,7 @@ function LandingPage() {
 
     <motion.img src={Cloud} className="cloud1" alt="cloud1" variant={buttonVariants} />
     <motion.img src={HeavyCloud} className="cloud2" alt="cloud2" variant={buttonVariants} />
+    <SearchBox/>
 
   </motion.div>
 
