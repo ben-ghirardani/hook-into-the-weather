@@ -18,15 +18,17 @@ export default function SearchBox() {
 
   return (
     <div className="search-box">
-      <input
-        type="text"
-        value={text}
-        onChange={onChange}
-      />
-      <input 
-        type="submit"
-        value="Go!"
-      />
+      <form onSubmit={console.log("add functionality here!")}>
+        <input
+          type="text"
+          value={text}
+          onChange={onChange}
+        />
+        <input 
+          type="submit"
+          value="Go!"
+        />
+      </form>
     </div>
   )
 
