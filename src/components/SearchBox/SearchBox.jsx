@@ -11,7 +11,8 @@ export default function SearchBox() {
     setText(e.currentTarget.value);
   };
 
-  const submitText = () => {
+  const submitText = (e) => {
+    e.preventDefault();
     console.log("add functionality here!")
   };
 
@@ -22,7 +23,7 @@ export default function SearchBox() {
 
   return (
     <div className="search-box">
-      <form onSubmit={console.log(submitText)}>
+      <form onSubmit={submitText}>
         <input
           type="text"
           value={text}
