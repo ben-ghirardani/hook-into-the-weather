@@ -12,19 +12,20 @@ export default function SearchBox() {
     setText(e.currentTarget.value);
   };
 
+
+  // ***********************
   const submitText = (e) => {
     e.preventDefault();
 
     const countryData = CountryData;
-    let match;
 
     countryData.forEach(item => {
       if (item.Location === text) {
-        match = item 
+        setWoeid(item.WOEID)
       } 
     });
-    console.log(match);
   };
+
 
   // is there too much happening in SearchBox? Not reusable. Pull some of the functionality out and into app?
 
