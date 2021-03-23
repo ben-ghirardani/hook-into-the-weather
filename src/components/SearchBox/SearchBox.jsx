@@ -12,13 +12,12 @@ export default function SearchBox() {
     setText(e.currentTarget.value);
   };
 
-
-  // ***********************
+  // create a promise as there is a slight delay?
+  // how to speed up searching the array?
   const submitText = (e) => {
     e.preventDefault();
     setWoeid("");
     const countryData = CountryData;
-
     countryData.forEach(item => {
       if (item.Location === text) {
         setWoeid(item.WOEID)
