@@ -7,7 +7,10 @@ export default function SearchBox() {
   const [ text, setText ] = useState("");
   const [ woeid, setWoeid ] = useState("");
 
+  const countyData = CountryData;
+
   const onChange = (e) => {
+    e.preventDefault();
     setText(e.currentTarget.value);
   };
 
