@@ -16,7 +16,7 @@ export default function SearchBox() {
   // ***********************
   const submitText = (e) => {
     e.preventDefault();
-
+    setWoeid("");
     const countryData = CountryData;
 
     countryData.forEach(item => {
