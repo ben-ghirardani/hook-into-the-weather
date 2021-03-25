@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import useFetch from './components/useFetch.jsx';
+import useFetch from './components/useFetch/useFetch.jsx';
 
 function App() {
 
