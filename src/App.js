@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import useFetch from './components/useFetch/useFetch.jsx';
