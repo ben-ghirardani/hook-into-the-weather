@@ -7,13 +7,18 @@ function App() {
 
   const [ locationData, setLocationData ] =  useState("");
 
-  function getLocation() {
-
+  // takes a woeid, formats a url, passes it to useFetch, and fetches the data
+  function getLocation(woeid) {
+    let url = `https://www.metaweather.com/api/location/${woeid}/`
+    let data = useFetch(url);
+    useState(data)
   }
 
   return (
     <>
-      <LandingPage/>
+      <LandingPage
+        getLocation={getLocation}
+      />
     </>
   );
 }

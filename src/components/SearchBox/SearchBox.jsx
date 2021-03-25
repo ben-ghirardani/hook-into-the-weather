@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './SearchBox.css';
 import CountryData from '../MasterData/CountryData.jsx';
 
-export default function SearchBox() {
+export default function SearchBox(props) {
 
   const [ text, setText ] = useState("");
   // should WOEID be part of the search box? Makes it not reusable
@@ -24,6 +24,7 @@ export default function SearchBox() {
         setWoeid(item.WOEID)
       } 
     });
+    props.getLocation(woeid);
   };
 
   // is there too much happening in SearchBox? Not reusable. Pull some of the functionality out and into app?
