@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import useFetch from './components/UseFetch/UseFetch.jsx';
+import UseFetch from './components/UseFetch/UseFetch.jsx';
 
 function App() {
   const [ locationData, setLocationData ] =  useState("");
@@ -9,7 +9,7 @@ function App() {
   // takes a woeid, formats a url, passes it to useFetch, and fetches the data
   function getLocation(woeid) {
     let url = `https://www.metaweather.com/api/location/${woeid}/`
-    let data = useFetch(url);
+    let data = UseFetch(url);
     useState(data)
   }
 
