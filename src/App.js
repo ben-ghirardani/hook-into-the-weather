@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import UseFetch from './components/UseFetch/UseFetch.jsx';
+import useFetch from './components/UseFetch/UseFetch.jsx';
 
 function App() {
 
