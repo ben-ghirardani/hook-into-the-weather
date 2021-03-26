@@ -4,7 +4,6 @@ import LandingPage from './components/LandingPage/LandingPage.jsx';
 import useFetch from './components/UseFetch/UseFetch.jsx';
 
 function App() {
-
   const [ locationData, setLocationData ] =  useState("");
 
   // takes a woeid, formats a url, passes it to useFetch, and fetches the data
