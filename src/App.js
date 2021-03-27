@@ -5,19 +5,22 @@ import useFetch from './components/UseFetch/UseFetch.jsx';
 
 
 function App() {
-  const [ locationData, setLocationData ] =  useState("");
+  const [ apiURL, setApiURL ] =  useState("");
+  // call useFetch here?
+  // const data = useFetch(url)?
 
-  // takes a woeid, formats a url, passes it to useFetch, and fetches the data
-  function getLocation(woeid) {
+
+
+  // takes a woeid, formats a url
+  function getURL(woeid) {
     let url = `https://www.metaweather.com/api/location/${woeid}/`
-    let data = useFetch(url);
-    useState(data);
+    setApiURL(url);
   }
 
   return (
     <>
       <LandingPage
-        getLocation={getLocation}
+        getURL={getURL}
       />
     </>
   );

@@ -30,7 +30,7 @@ function LandingPage(props) {
             <motion.img src={Cloud} className="cloud1" alt="cloud1" variant={buttonVariants} />
             <motion.img src={HeavyCloud} className="cloud2" alt="cloud2" variant={buttonVariants} />
             <SearchBox
-              getLocation={props.getLocation}
+              getURL={props.getURL}
             />
 
           </motion.div>

@@ -24,7 +24,7 @@ export default function SearchBox(props) {
         setWoeid(item.WOEID)
       } 
     });
-    props.getLocation(woeid);
+    props.getURL(woeid);
   };
 
   // is there too much happening in SearchBox? Not reusable. Pull some of the functionality out and into app?
