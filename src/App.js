@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <LandingPage
-        getLocation={getLocation}
+        // getLocation={getLocation}
       />
     </>
   );
