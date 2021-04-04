@@ -12,8 +12,13 @@ export default function SearchBox(props) {
   const submitText = (e) => {
     e.preventDefault();
     // needs async?
-    props.getWoeid(text);
-    props.createURL();
+    async function doURL () {
+      await props.getWoeid(text);
+      await props.createURL();
+    }
+    doURL();
+    // props.getWoeid(text);
+    // props.createURL();
   };
 
   return (
