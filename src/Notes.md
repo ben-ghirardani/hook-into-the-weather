@@ -27,3 +27,22 @@ a free text box that searches the array of locations and a wheel with all option
       "type": "image/png",
       "sizes": "512x512"
     }
+
+
+import { useState, useEffect } from "react";
+
+function UseFetch(url) {
+  const [data, setData] = useState(null);
+
+  async function fetchData() {
+    const response = await fetch(url);
+    const json = await response.json();
+    setData(json);
+  }
+
+  useEffect(() => {fetchData(url)},[url]);
+
+  return data;
+};  
+
+export default UseFetch;
