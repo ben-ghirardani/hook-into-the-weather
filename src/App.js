@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-// import useFetch from './components/UseFetch/UseFetch.jsx';
+import useFetch from './components/UseFetch/UseFetch.jsx';
 import CountryData from './components/MasterData/CountryData.jsx';
 
 
@@ -12,7 +12,7 @@ function App() {
   const [ apiURL, setApiURL ] =  useState("");
 
   // call useFetch here? Should only update when 'dependency' (ie. apiURL) changes. Error handling for first render? 
-  // const locationData = useFetch(apiURL);
+  const locationData = useFetch(apiURL);
 
   // takes a woeid, formats a url
   function getWoeid(text) {
