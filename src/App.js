@@ -21,7 +21,9 @@ function App() {
       if (item.Location === text) {
         let strungWOEID = item.WOEID.toString()
         setWoeid(strungWOEID);
-      } 
+      } else {
+        return
+      }
     });
   };
 
