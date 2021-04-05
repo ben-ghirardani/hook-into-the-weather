@@ -17,8 +17,6 @@ export default function SearchBox(props) {
       await props.createURL();
     }
     doURL();
-    // props.getWoeid(text);
-    // props.createURL();
   };
 
   return (

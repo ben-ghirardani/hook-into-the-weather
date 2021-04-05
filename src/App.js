@@ -7,7 +7,10 @@ import CountryData from './components/MasterData/CountryData.jsx';
 
 function App() {
   // do I need all 3?
+
+  // stop using woeid state, wrap it all up into a function and pass the full url to state then look for change
   const [ woeid, setWoeid ] = useState("");
+  
   // const [ apiFragment, setApiFragment ] = useState("https://www.metaweather.com/api/location/");
   const [ apiURL, setApiURL ] =  useState("");
 
@@ -17,14 +20,14 @@ function App() {
   // takes a woeid, formats a url
   function getWoeid(text) {
     const countryData = CountryData;
+    let stringWOEID;
     countryData.forEach(item => {
       if (item.Location === text) {
-        let strungWOEID = item.WOEID.toString()
-        setWoeid(strungWOEID);
-      } else {
-        return
+        stringWOEID = item.WOEID.toString()
+        // setWoeid(strungWOEID);
       }
     });
+    return strungWOEID;
   };
 
   function createURL() {
@@ -33,6 +36,9 @@ function App() {
     setApiURL(url+urlSuffix);
   };
 
+  async function woeidAndURL() {
+    await getWoeid()
+  };
 
   return (
     <>
