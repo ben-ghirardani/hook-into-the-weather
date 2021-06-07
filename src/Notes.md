@@ -10,3 +10,6 @@
       "type": "image/png",
       "sizes": "512x512"
     }
+
+BackgroundSelector confirmed to be randomising the array.
+Is background selector needed?
