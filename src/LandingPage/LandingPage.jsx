@@ -1,11 +1,10 @@
 import React from 'react';
 import './LandingPage.css';
-import backgroundSelector from '../BackgroundSelector/BackgroundSelector.jsx';
 
 
-function LandingPage(props) {
-  return <div>
-    {console.log(backgroundSelector())}
+function LandingPage() {
+  return <div className="landing-page">
+    Hook Into The Weather
   </div>
 }
 
