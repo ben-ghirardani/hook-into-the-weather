@@ -1,0 +1,8 @@
+.results {
+  border: 2px solid red;
+  height: 50%;
+  width: 75%;
+  border-radius: 15px;
+  background-color: #1a1e35;
+  opacity: 95%;
+}

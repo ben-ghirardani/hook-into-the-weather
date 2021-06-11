@@ -1,10 +1,12 @@
 import React from 'react';
 import './LandingPage.css';
+import Search from '../Search/Search.jsx';
+import Results from '../Results/Results.jsx';
 
+function LandingPage(props) {
 
-function LandingPage() {
   return <div className="landing-page">
-    Hook Into The Weather
+    {props.data === null ? <Search/> : <Results/>} 
   </div>
 }
 
