@@ -6,7 +6,7 @@ import Results from '../Results/Results.jsx';
 function LandingPage(props) {
 
   return <div className="landing-page">
-    {props.data === null ? <Search/> : <Results/>} 
+    {props.currentWeather === null ? <Search/> : <Results/>} 
   </div>
 }
 

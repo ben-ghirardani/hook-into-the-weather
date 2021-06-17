@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
-import getData from './GetData/GetData.jsx';
 import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
@@ -10,20 +9,34 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
 
-  useEffect(() => {
-    
-    // create urls from the below and the locations
+  useEffect( () => {
 
-    // http://api.weatherapi.com/v1/current.json?key=e35ad968908942abac7171042210706&q=Edinburgh
-    // http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=Edinburgh
-    // forecast also needs &days= between 1 and 10
-    const currentWeatherData = getData(url);
-    const forecastData = getData(url);
+    const fetchCurrentWeather = async () => {
+      const currentURL = `http://api.weatherapi.com/v1/current.json?key=e35ad968908942abac7171042210706&q=${location}`;
+      const response = await fetch(currentURL);
+      const currentJSON = await response.json();
+      setCurrentWeather(currentJSON);
+    };
+
+    const fetchForecast = async () => {
+      const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
+      const response = await fetch(forecastURL);
+      const forecastJSON = await response.json();
+      setForecast(forecastJSON);
+    };
+
+    fetchCurrentWeather();
+    fetchForecast();
+
   }, [location]);
+
 
   return (
     <>
-      <LandingPage/>
+      <LandingPage
+        currentWeather={currentWeather}
+        forecast={forecast}
+      />
     </>
   );
 }
