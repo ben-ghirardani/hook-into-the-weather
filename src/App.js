@@ -4,14 +4,14 @@ import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
 
-  // does useState need to be set null as default?
-  const [location, setLocation] = useState(null);
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const [location, setLocation] = useState("initial");
+  const [currentWeather, setCurrentWeather] = useState();
   const [forecast, setForecast] = useState(null);
+  const [display, setDisplay] = useState("search");
 
   useEffect( () => {
 
-    const fetchCurrentWeather = async () => {
+      const fetchCurrentWeather = async () => {
       const currentURL = `http://api.weatherapi.com/v1/current.json?key=e35ad968908942abac7171042210706&q=${location}`;
       const response = await fetch(currentURL);
       const currentJSON = await response.json();
@@ -27,15 +27,20 @@ function App() {
 
     fetchCurrentWeather();
     fetchForecast();
-
+     
   }, [location]);
 
+  function applyLocation(inputLocation) {
+    setLocation(inputLocation);
+  }
 
   return (
     <>
       <LandingPage
         currentWeather={currentWeather}
         forecast={forecast}
+        display={display}
+        applyLocation={applyLocation}
       />
     </>
   );
