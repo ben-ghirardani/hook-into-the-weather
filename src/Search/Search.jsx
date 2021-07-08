@@ -13,6 +13,7 @@ function Search(props) {
   function onSubmit(event) {
     event.preventDefault();
     props.applyLocation(inputText);
+    props.changeDisplay("results");
   }
 
   return <div className="search">
