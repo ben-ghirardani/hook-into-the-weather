@@ -5,7 +5,6 @@ import LandingPage from './LandingPage/LandingPage.jsx';
 function App() {
 
   const [location, setLocation] = useState("initial");
-  // const [currentWeather, setCurrentWeather] = useState();
   const [forecast, setForecast] = useState(null);
   const [display, setDisplay] = useState("search");
 

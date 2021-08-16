@@ -1,3 +1,7 @@
+Create a Settings page, where user can toggle between celcius and farenheit, etc.
+
+---------------------------------------------------------------------
+
 For Search box -
 
 message saying "Enter location" with extra info on hover of a small ? button. 
@@ -30,25 +34,7 @@ IP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1
       "type": "image/png",
       "sizes": "512x512"
     }
-Background Selector removed for now -
-
-import beach from '../images/beach.jpg';
-import forestLake from '../images/forest-and-lake.jpg';
-import mountainLake from '../images/mountain-and-lake.jpg';
-import winterScene from '../images/winter-scene.jpg';
-import fisherYatesShuffle from '../FisherYatesShuffle.jsx';
-
-function BackgroundSelector() {
-
-  const backgrounds = [beach, forestLake, mountainLake, winterScene];
-  const shuffledArray = fisherYatesShuffle(backgrounds);
-
-  return shuffledArray;
-
-}
-
-export default BackgroundSelector;
-
+    
 ---------------------------------------------------------------------
 
 reportWebVitals(console.log); commented out of index.js to make console less busy for now
@@ -58,23 +44,3 @@ reportWebVitals(console.log); commented out of index.js to make console less bus
 what are the rules for naming folders .jsx / .js ?
 
 ---------------------------------------------------------------------
-
-UseFetch.js file removed - 
-import { useState, useEffect } from "react";
-
-function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  async function fetchData() {
-    const response = await fetch(url);
-    const json = await response.json();
-    setData(json);
-  }
-
-  useEffect(() => {fetchData(url)},[url]);
-
-  return data;
-};  
-
-export default useFetch;
