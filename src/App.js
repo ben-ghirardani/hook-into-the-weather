@@ -4,7 +4,8 @@ import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
 
-  const [location, setLocation] = useState("initial");
+  const [loading, setLoading] = useState(true)
+  const [location, setLocation] = useState("");
   const [forecast, setForecast] = useState(null);
   const [display, setDisplay] = useState("search");
 
@@ -24,17 +25,24 @@ function App() {
 
   function applyLocation(inputLocation) {
     setLocation(inputLocation);
-  }
+  };
 
   function changeDisplay(text) {
     setDisplay(text);
-  }
+  };
+
+  function changeLoading(input) {
+    setLoading(input);
+  };
 
   return (
     <>
       <LandingPage
         forecast={forecast}
         display={display}
+        location={location}
+        loading={loading}
+        changeLoading={changeLoading}
         applyLocation={applyLocation}
         changeDisplay={changeDisplay}
       />
