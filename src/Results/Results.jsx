@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Results.css';
-// import GetIcon from '../GetIcon/GetIcon.jsx';
+import GetIcon from '../GetIcon/GetIcon.jsx';
+import ForecastTile from '../ForecastTile/ForecastTile.jsx';
 
 function Results(props) {
 
@@ -13,30 +14,24 @@ function Results(props) {
     }
   }, [props]);
 
-  // function propsCheck() {
-  //   if(props.forecast.forecast.error.message) {
-  //     return props.forecast.forecast.error.message
-  //   } else if (props.forecast.forecast.location.name) {
-  //     return props.forecast.forecast.location.name 
-  //   } else return "something went wrong"
-  // };
-
-  // function propsCheck() {
-  //   if(props.forecast === null) {
-  //     console.log("it's null")
-  //   } else if (props.forecast.location.name) {
-  //     console.log(props.forecast.location.name)
-  //   } else {
-  //     console.log("a different error")
-  //   }
-  // }
-
-
   return(
+    // results will be split in half horizontally, each a flex container to hold the weather data components
+    // change divs to semantic html
     <div className="results">
-      Results
-      <div>
-        {props.loading === true ? "Loading" : props.forecast.location.name}
+
+      <div className="upper">
+        <div className="information">test</div>
+        <div className="icon">test</div>
+      </div>
+
+      <div className="lower">
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
+        <ForecastTile>Test</ForecastTile>
       </div>
     </div>
   )

@@ -1,0 +1,7 @@
+.forecast-tile {
+  height: 90%;
+  width: 12%;
+  border: 1px solid red;
+  color: red;
+  font-size: large;
+}
