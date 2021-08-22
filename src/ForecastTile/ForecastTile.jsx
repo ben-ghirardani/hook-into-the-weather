@@ -5,6 +5,7 @@ function ForecastTile(props) {
 
   return(
     <div className="forecast-tile">
+      <img></img>
     </div>
   )
 

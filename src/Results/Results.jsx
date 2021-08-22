@@ -25,13 +25,15 @@ function Results(props) {
       </div>
 
       <div className="lower">
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
-        <ForecastTile>Test</ForecastTile>
+
+        {/* pass details in as props */}
+        <ForecastTile/>
+        <ForecastTile/>
+        <ForecastTile/>
+        <ForecastTile/>
+        <ForecastTile/>
+        <ForecastTile/>
+        <ForecastTile/>
       </div>
     </div>
   )
