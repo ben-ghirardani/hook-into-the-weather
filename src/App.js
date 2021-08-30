@@ -8,6 +8,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [forecast, setForecast] = useState(null);
   const [display, setDisplay] = useState("search");
+  const [temp, setTemp] = useState("temp_c");
 
   useEffect( () => {
 
@@ -33,6 +34,15 @@ function App() {
 
   function changeLoading(input) {
     setLoading(input);
+  };
+
+  // currently not implemented
+  function changeTemp() {
+    if(temp === "temp_c") {
+      setTemp("temp_f")
+    } else if (temp === "temp_f") {
+      setTemp("temp_c")
+    }
   };
 
   return (

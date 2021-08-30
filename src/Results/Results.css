@@ -17,7 +17,6 @@
   top: 0%;
   height: 50%;
   width: 100%;
-  border: 1px solid blue;
 }
 
 .information {
@@ -43,5 +42,4 @@
   bottom: 0%;
   height: 50%;
   width: 100%;
-  border: 1px solid green;
 }
