@@ -5,7 +5,15 @@ function ForecastTile(props) {
 
   return(
     <div className="forecast-tile">
-      <img></img>
+      
+      <div className="upper-forecast-tile">
+        <i className="icon">{props.icon}</i>
+      </div>
+      
+        <div className="lower-forecast-tile">
+          <div className="high">{props.high}</div>
+          <div className="low">{props.low}</div>
+        </div>
     </div>
   )
 

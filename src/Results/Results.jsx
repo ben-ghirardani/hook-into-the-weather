@@ -20,13 +20,11 @@ function Results(props) {
     <div className="results">
 
       <div className="upper">
-        <div className="information">test</div>
-        <div className="icon">test</div>
+        <div className="information">Today's Info</div>
+        <div className="icon-tile">Today's Icon</div>
       </div>
 
       <div className="lower">
-
-        {/* pass details in as props */}
         <ForecastTile/>
         <ForecastTile/>
         <ForecastTile/>
