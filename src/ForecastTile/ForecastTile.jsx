@@ -5,9 +5,10 @@ function ForecastTile(props) {
 
   return(
     <div className="forecast-tile">
-      
+
       <div className="upper-forecast-tile">
         <i className="icon">{props.icon}</i>
+        {/* <i className="icon" src={props.icon}></i> */}
       </div>
       
         <div className="lower-forecast-tile">

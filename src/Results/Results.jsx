@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Results.css';
 import GetIcon from '../GetIcon/GetIcon.jsx';
 import ForecastTile from '../ForecastTile/ForecastTile.jsx';
+import DayIcons from '../IconList/IconListDay.jsx';
 
 function Results(props) {
 
@@ -21,7 +22,9 @@ function Results(props) {
 
       <div className="upper">
         <div className="information">Today's Info</div>
-        <div className="icon-tile">Today's Icon</div>
+        <div className="icon-tile">
+        <img src={DayIcons.Day176}></img>
+        </div>
       </div>
 
       <div className="lower">
