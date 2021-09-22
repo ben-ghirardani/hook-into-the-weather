@@ -1,10 +1,11 @@
-
+// can access an object's properties via obj.property as well as obj[property]
+// have GetIcon return a string in the same format as the property as pass it to IconList
 
 // pass icon string eg. weatherapi.com/weather/64x64/day/116.png
-// passing above string would give a result of ["day", "116.png"]
 function GetIcon(props) {
   let time;
   let iconRef;
+  let result;
 
   if(props.search("day") > 0) {
     time = "Day"
@@ -15,29 +16,15 @@ function GetIcon(props) {
 
   let position = props.lastIndexOf("/");  
   let newString = props.slice(position+1);
-  iconRef = newString;  
+  let removedSuffix = newString.replace(".png", "");
+  iconRef = removedSuffix;  
   
+  result = time+iconRef;
   
-  return "something";
+  console.log(result)
+  // return result;
   
 }
 
+
 export default GetIcon;
-
-// original function
-// function GetIcon(props) {
-//   let answer = [];
-
-//   if(props.search("day") > 0) {
-//     answer.push("day")
-//   } else {
-//     answer.push("night")
-//   };
-
-
-//   let position = props.lastIndexOf("/");  
-//   let newString = props.slice(position+1);
-//   answer.push(newString);  
-  
-//   return answer;
-// }

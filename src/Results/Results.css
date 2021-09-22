@@ -28,11 +28,26 @@
 }
 
 .icon-tile {
+  display: flex;
+  justify-content: center;
   border: 1px dotted purple;
   width: 33%;
   height: 100%;
   flex-grow: 1;
   color: black;
+}
+
+.current-weather {
+  border: 1px solid red;
+  align-self: center;
+  /* if the parent isn't a square this will not be a square */
+  height: 75%;
+  width: 75%;
+}
+
+.icon {
+  height: 50%;
+  width: 50%;
 }
 
 .lower {
