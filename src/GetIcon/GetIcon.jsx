@@ -21,8 +21,8 @@ function GetIcon(props) {
   
   result = time+iconRef;
   
-  console.log(result)
-  // return result;
+  // console.log("GetIcon result - ",result)
+  return result;
   
 }
 

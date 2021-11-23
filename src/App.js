@@ -4,7 +4,6 @@ import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
 
-  const [loading, setLoading] = useState(true)
   const [location, setLocation] = useState("");
   const [forecast, setForecast] = useState(null);
   const [display, setDisplay] = useState("search");
@@ -32,18 +31,15 @@ function App() {
     setDisplay(text);
   };
 
-  function changeLoading(input) {
-    setLoading(input);
-  };
-
   // currently not implemented
-  function changeTemp() {
-    if(temp === "temp_c") {
-      setTemp("temp_f")
-    } else if (temp === "temp_f") {
-      setTemp("temp_c")
-    }
-  };
+
+  // function changeTemp() {
+  //   if(temp === "temp_c") {
+  //     setTemp("temp_f")
+  //   } else if (temp === "temp_f") {
+  //     setTemp("temp_c")
+  //   }
+  // };
 
   return (
     <>
@@ -51,8 +47,7 @@ function App() {
         forecast={forecast}
         display={display}
         location={location}
-        loading={loading}
-        changeLoading={changeLoading}
+      
         applyLocation={applyLocation}
         changeDisplay={changeDisplay}
       />

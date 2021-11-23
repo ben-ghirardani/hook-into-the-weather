@@ -7,29 +7,29 @@ import LoadingIcons from 'react-loading-icons';
 
 function Results(props) {
 
-  const [data, setData] = useState("");
+  // wrap the stuff I get from props into one object? Does it matter?
+  const [loading, setLoading] = useState(true)
+  const [placeName, setPlaceName] = useState("...")
+  // possible to add template literal? "${put temp here} C"
+  const [temp_c, setTemp_c] = useState("...")
+  const [description, setDescription] = useState("...")
+
+
+  // *** remove this once everything is working ***
+  useEffect(()=> {
+    console.log("cosole log of props - ", props)
+  })
 
   useEffect(()=> {
-    setData(props)
-    if(!props.forecast.error) {
-      props.changeLoading(false);
+    if(props.forecast.error) {
+      console.log(props.forecast.error.message)
+    } else {
+      setLoading(false);
+      setPlaceName(props.forecast.location.name)
+      setTemp_c(props.forecast.current.temp_c)
+      setDescription(props.forecast.current.condition.text)
     }
   }, [props]);
-
-  // use state, if state exists, getIcon, else use spinner?
-  // data is undefined on first render ***
-  // const weatherNow = data.forecast.current.condition.icon;
-
-
-  // returns undefined
-
-  // function checkForData() {
-  //   if(!props.forecast.error) {
-  //     return "weatherapi.com/weather/64x64/day/116.png"
-  //   } else {
-  //     return data.forecast.current.condition.icon;
-  //   }
-  // }
 
   const loadingIcon = <LoadingIcons.TailSpin
             className="current-weather"
@@ -38,24 +38,45 @@ function Results(props) {
             preserveAspectRatio="xMidYMid meet"
           />;
 
+  // ***
+  // do I even need data to be stored in this component? Once it's available, break out the elements I need into state.
+  // ***
+
+
+  // make the function below more generic, use it for all elements on the results page that rely on props?
+  // see below
+
+  // checks if data is available, returns either a loading icon or parses the icon ref
+  // and uses it to refer to the relevent entry in the icon object
+  function currentWeatherIcon() {
+    if(loading === true) {
+      return loadingIcon
+    } else if (loading === false) {
+      const iconRef = GetIcon(props.forecast.current.condition.icon)
+      return <img src={IconList[iconRef]} alt="Icon showing today's weather"></img>
+    }
+  };
+
   return(
     <div className="results">
 
       <div className="upper">
         <div className="information">
-          Today's Info
+          <h1>{placeName}</h1>
+            <section className="temp-and-description">
+              <p className="temp">{temp_c}</p> <p className="description">{description}</p>
+            </section>
+          <p className="wind-and-rain">wind, rain, etc</p>
         </div>
         <div className="icon-tile">
-          {/* can access an object's properties via obj.property as well as obj[property] */}
-          {/* have GetIcon return a string in the same format as the property as pass it to IconList */}
-        {/* <img src={IconList[GetIcon()]}></img> */}
-        
-          {loadingIcon}
-        
+          {currentWeatherIcon()}
         </div>
       </div>
 
       <div className="lower">
+
+        {/* need to pass icon, high and low as props */}
+
         <ForecastTile/>
         <ForecastTile/>
         <ForecastTile/>

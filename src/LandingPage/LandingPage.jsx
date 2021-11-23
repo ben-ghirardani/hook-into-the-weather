@@ -11,13 +11,10 @@ function LandingPage(props) {
       return <Search 
                 applyLocation={props.applyLocation} 
                 changeDisplay={props.changeDisplay} 
-                loading={props.loading}
               />
     } else if (props.display === "results") {
       return <Results 
                 forecast={props.forecast}
-                loading={props.loading}
-                changeLoading={props.changeLoading}
               />
     } else {
       return <SomethingWentWrong/>
