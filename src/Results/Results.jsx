@@ -11,9 +11,11 @@ function Results(props) {
   const [loading, setLoading] = useState(true)
   const [placeName, setPlaceName] = useState("...")
   // possible to add template literal? "${put temp here} C"
-  const [temp_c, setTemp_c] = useState("...")
+  const [temp_cHigh, setTemp_cHigh] = useState(["..."])
+  const [temp_cLow, setTemp_cLow] = useState("...")
   const [description, setDescription] = useState("...")
-
+  const [chanceOfRain, setChanceOfRain] = useState(["..."])
+  const [chanceOfSnow, setChanceOfSnow] = useState(["..."])
 
   // *** remove this once everything is working ***
   useEffect(()=> {
@@ -26,8 +28,36 @@ function Results(props) {
     } else {
       setLoading(false);
       setPlaceName(props.forecast.location.name)
-      setTemp_c(props.forecast.current.temp_c)
-      setDescription(props.forecast.current.condition.text)
+      // pull the data for all days available at once
+      // setState takes two arguments, the old state and the new state, in the examples below, the old
+      // state is a placeholder so is completely replaced by new state.
+      setTemp_cHigh(prevState =>
+        [
+          props.forecast.forecast.forecastday[0].day.maxtemp_c,
+          props.forecast.forecast.forecastday[1].day.maxtemp_c,
+          props.forecast.forecast.forecastday[2].day.maxtemp_c
+        ]
+      )
+      setTemp_cLow(prevState =>
+        [
+          props.forecast.forecast.forecastday[0].day.mintemp_c,
+          props.forecast.forecast.forecastday[1].day.mintemp_c,
+          props.forecast.forecast.forecastday[2].day.mintemp_c
+        ]
+      )
+      setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
+      setChanceOfRain(prevState => 
+        [
+          props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
+          props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
+          props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
+        ]
+      )
+      setChanceOfSnow(prevState => 
+        [
+          props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
+        ]
+      )
     }
   }, [props]);
 
@@ -38,13 +68,6 @@ function Results(props) {
             preserveAspectRatio="xMidYMid meet"
           />;
 
-  // ***
-  // do I even need data to be stored in this component? Once it's available, break out the elements I need into state.
-  // ***
-
-
-  // make the function below more generic, use it for all elements on the results page that rely on props?
-  // see below
 
   // checks if data is available, returns either a loading icon or parses the icon ref
   // and uses it to refer to the relevent entry in the icon object
@@ -52,8 +75,8 @@ function Results(props) {
     if(loading === true) {
       return loadingIcon
     } else if (loading === false) {
-      const iconRef = GetIcon(props.forecast.current.condition.icon)
-      return <img src={IconList[iconRef]} alt="Icon showing today's weather"></img>
+      const iconRef = GetIcon(props.forecast.forecast.forecastday[0].day.condition.icon)
+      return <img src={IconList[iconRef]} alt="Weather Icon"></img>
     }
   };
 
@@ -64,9 +87,19 @@ function Results(props) {
         <div className="information">
           <h1>{placeName}</h1>
             <section className="temp-and-description">
-              <p className="temp">{temp_c}</p> <p className="description">{description}</p>
+              <p className="temp">
+                High: {temp_cHigh[0]}
+                <br></br>
+                Low: {temp_cLow[0]}
+              </p> 
+              <p className="description">
+                {description}
+              </p>
             </section>
-          <p className="wind-and-rain">wind, rain, etc</p>
+          <p className="wind-and-rain">
+            <img src={IconList.Day308} alt="rain icon"></img>: {chanceOfRain[0]}%
+            <img src={IconList.Day338} alt="snow icon"></img>: {chanceOfSnow[0]}%
+          </p>
         </div>
         <div className="icon-tile">
           {currentWeatherIcon()}
@@ -77,7 +110,6 @@ function Results(props) {
 
         {/* need to pass icon, high and low as props */}
 
-        <ForecastTile/>
         <ForecastTile/>
         <ForecastTile/>
         <ForecastTile/>

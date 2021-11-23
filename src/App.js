@@ -7,12 +7,12 @@ function App() {
   const [location, setLocation] = useState("");
   const [forecast, setForecast] = useState(null);
   const [display, setDisplay] = useState("search");
-  const [temp, setTemp] = useState("temp_c");
+  // const [temp, setTemp] = useState("temp_c");
 
   useEffect( () => {
 
     const fetchForecast = async () => {
-      // only three day forecast available? Check if longer is a paid option.
+      // only three day forecast available. More than 3 days is a paid option.
       const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
       const response = await fetch(forecastURL);
       const forecastJSON = await response.json();
