@@ -42,6 +42,13 @@ function LandingPage(props) {
     />
     <Results 
       forecast={props.forecast}
+      location={props.location}
+      tempCentHigh={props.tempCentHigh}
+      tempCentLow={props.tempCentLow}
+      description={props.description}
+      chanceOfRain={props.chanceOfRain}
+      chanceOfSnow={props.chanceOfSnow}
+      isLoading={props.isLoading}
     />
   </div>
 }

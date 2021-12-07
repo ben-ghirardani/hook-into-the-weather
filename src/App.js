@@ -7,12 +7,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [location, setLocation] = useState(null);
   const [forecast, setForecast] = useState("no data");
-  const [tempCentHigh, setTempCentHigh] = useState("")
+  const [tempCentHigh, setTempCentHigh] = useState([""]);
+  const [tempCentLow, setTempCentLow] = useState([""]);
+  const [description, setDescription] = useState("");
+  const [chanceOfRain, setChanceOfRain] = useState([""]);
+  const [chanceOfSnow, setChanceOfSnow] = useState("")
 
   useEffect( () => {
     const fetchForecast = async () => {
       setIsLoading(true);
-      
       if(location === null) {
         return
       } else {
@@ -21,6 +24,31 @@ function App() {
         const response = await fetch(forecastURL);
         const forecastJSON = await response.json();
         setForecast(forecastJSON);
+        // setState takes two arguments, the old state and the new state, in the examples below, the old
+        // state is a placeholder so is completely replaced by new state.
+        setTempCentHigh(prevState => 
+          [
+            forecastJSON.forecast.forecastday[0].day.maxtemp_c,
+            forecastJSON.forecast.forecastday[1].day.maxtemp_c,
+            forecastJSON.forecast.forecastday[2].day.maxtemp_c
+          ]
+        )
+        setTempCentLow(prevState =>
+          [
+            forecastJSON.forecast.forecastday[0].day.mintemp_c,
+            forecastJSON.forecast.forecastday[1].day.mintemp_c,
+            forecastJSON.forecast.forecastday[2].day.mintemp_c
+          ]
+        )
+        setDescription(forecastJSON.forecast.forecastday[0].day.condition.text)
+        setChanceOfRain(prevState => 
+          [
+            forecastJSON.forecast.forecastday[0].day.daily_chance_of_rain,
+            forecastJSON.forecast.forecastday[1].day.daily_chance_of_rain,
+            forecastJSON.forecast.forecastday[2].day.daily_chance_of_rain
+          ]
+        )
+        setChanceOfSnow(forecastJSON.forecast.forecastday[0].day.daily_chance_of_snow)
       }
       setIsLoading(false)
     };
@@ -35,23 +63,19 @@ function App() {
   return (
     <>
       <LandingPage
-        forecast={forecast}
         applyLocation={applyLocation}
+        // do I need to pass forecast anymore, now that the seperate elements are being passed?
+        forecast={forecast}
+        location={location}
+        tempCentHigh={tempCentHigh}
+        tempCentLow={tempCentLow}
+        description={description}
+        chanceOfRain={chanceOfRain}
+        chanceOfSnow={chanceOfSnow}
+        isLoading={isLoading}
       />
     </>
   );
 }
 
 export default App;
-
-  // useEffect( () => {
-  //   const fetchForecast = async () => {
-  //     // only three day forecast available. More than 3 days is a paid option.
-  //     const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
-  //     const response = await fetch(forecastURL);
-  //     const forecastJSON = await response.json();
-  //     setForecast(forecastJSON);
-  //     // setTempCentHigh(forecastJSON) 
-  //   };
-  //   fetchForecast();
-  // }, [location]);

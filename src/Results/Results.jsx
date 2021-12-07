@@ -6,108 +6,10 @@ import IconList from '../IconList/IconList.jsx';
 import LoadingIcons from 'react-loading-icons';
 
 function Results(props) {
-
-  // wrap the stuff I get from props into one object? Does it matter?
-  const [loading, setLoading] = useState(true)
-  const [placeName, setPlaceName] = useState("...")
-  // possible to add template literal? "${put temp here} C"
-  const [temp_cHigh, setTemp_cHigh] = useState(["..."])
-  const [temp_cLow, setTemp_cLow] = useState("...")
-  const [description, setDescription] = useState("...")
-  const [chanceOfRain, setChanceOfRain] = useState(["..."])
-  const [chanceOfSnow, setChanceOfSnow] = useState(["..."])
-
   // *** remove this once everything is working ***
-  // useEffect(()=> {
-  //   console.log("cosole log of props - ", props)
-  // })
-
-  // useEffect(()=> {
-  //   if(props.forecast.error) {
-  //     console.log(props.forecast.error.message)
-  //   } else {
-  //     setLoading(false);
-  //     setPlaceName(props.forecast.location.name)
-  //     // pull the data for all days available at once
-  //     // setState takes two arguments, the old state and the new state, in the examples below, the old
-  //     // state is a placeholder so is completely replaced by new state.
-  //     setTemp_cHigh(prevState =>
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.maxtemp_c,
-  //         props.forecast.forecast.forecastday[1].day.maxtemp_c,
-  //         props.forecast.forecast.forecastday[2].day.maxtemp_c
-  //       ]
-  //     )
-  //     setTemp_cLow(prevState =>
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.mintemp_c,
-  //         props.forecast.forecast.forecastday[1].day.mintemp_c,
-  //         props.forecast.forecast.forecastday[2].day.mintemp_c
-  //       ]
-  //     )
-  //     setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
-  //     setChanceOfRain(prevState => 
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
-  //         props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
-  //         props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
-  //       ]
-  //     )
-  //     setChanceOfSnow(prevState => 
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
-  //       ]
-  //     )
-  //   }
-  // }, [props]);
-
-
-
-  // ***
-  // *** move everything below to state in App.js
-  // ***
-
-  //   useEffect(()=> {
-
-  //   if(props.forecast) {
-    
-  //     setLoading(false);
-
-  //     // .name is undefined
-  //     setPlaceName(props.forecast.location.name) 
-
-  //     // pull the data for all days available at once
-  //     // setState takes two arguments, the old state and the new state, in the examples below, the old
-  //     // state is a placeholder so is completely replaced by new state.
-  //     setTemp_cHigh(prevState =>
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.maxtemp_c,
-  //         props.forecast.forecast.forecastday[1].day.maxtemp_c,
-  //         props.forecast.forecast.forecastday[2].day.maxtemp_c
-  //       ]
-  //     )
-  //     setTemp_cLow(prevState =>
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.mintemp_c,
-  //         props.forecast.forecast.forecastday[1].day.mintemp_c,
-  //         props.forecast.forecast.forecastday[2].day.mintemp_c
-  //       ]
-  //     )
-  //     setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
-  //     setChanceOfRain(prevState => 
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
-  //         props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
-  //         props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
-  //       ]
-  //     )
-  //     setChanceOfSnow(prevState => 
-  //       [
-  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
-  //       ]
-  //     )
-  //   } 
-  // }, [props]);
+  useEffect(()=> {
+    console.log("cosole log of props - ", props)
+  })
 
   const loadingIcon = <LoadingIcons.TailSpin
             className="current-weather"
@@ -120,9 +22,9 @@ function Results(props) {
   // checks if data is available, returns either a loading icon or parses the icon ref
   // and uses it to refer to the relevent entry in the icon object
   function currentWeatherIcon() {
-    if(loading === true) {
+    if(props.loading === true) {
       return loadingIcon
-    } else if (loading === false) {
+    } else if (props.loading === false) {
       const iconRef = GetIcon(props.forecast.forecast.forecastday[0].day.condition.icon)
       return <img src={IconList[iconRef]} alt="Weather Icon"></img>
     }
@@ -133,20 +35,20 @@ function Results(props) {
 
       <div className="upper">
         <div className="information">
-          <h1>{placeName}</h1>
+          <h1>{props.location}</h1>
             <section className="temp-and-description">
               <p className="temp">
-                High: {temp_cHigh[0]}
+                High: {props.tempCentHigh[0]}
                 <br></br>
-                Low: {temp_cLow[0]}
+                Low: {props.tempCentLow[0]}
               </p> 
               <p className="description">
-                {description}
+                {props.description}
               </p>
             </section>
           <p className="wind-and-rain">
-            <img src={IconList.Day308} alt="rain icon"></img>: {chanceOfRain[0]}%
-            <img src={IconList.Day338} alt="snow icon"></img>: {chanceOfSnow[0]}%
+            <img src={IconList.Day308} alt="rain icon"></img>: {props.chanceOfRain[0]}%
+            <img src={IconList.Day338} alt="snow icon"></img>: {props.chanceOfSnow[0]}%
           </p>
         </div>
         <div className="icon-tile">
