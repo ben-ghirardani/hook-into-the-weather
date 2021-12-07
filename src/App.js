@@ -4,55 +4,54 @@ import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
 
-  const [location, setLocation] = useState("");
-  const [forecast, setForecast] = useState(null);
-  const [display, setDisplay] = useState("search");
-  // const [temp, setTemp] = useState("temp_c");
+  const [isLoading, setIsLoading] = useState(false);
+  const [location, setLocation] = useState(null);
+  const [forecast, setForecast] = useState("no data");
+  const [tempCentHigh, setTempCentHigh] = useState("")
 
   useEffect( () => {
-
     const fetchForecast = async () => {
-      // only three day forecast available. More than 3 days is a paid option.
-      const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
-      const response = await fetch(forecastURL);
-      const forecastJSON = await response.json();
-      setForecast(forecastJSON);
+      setIsLoading(true);
+      
+      if(location === null) {
+        return
+      } else {
+        // only three day forecast available. More than 3 days is a paid option.
+        const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
+        const response = await fetch(forecastURL);
+        const forecastJSON = await response.json();
+        setForecast(forecastJSON);
+      }
+      setIsLoading(false)
     };
-
     fetchForecast();
-     
   }, [location]);
+
 
   function applyLocation(inputLocation) {
     setLocation(inputLocation);
   };
 
-  function changeDisplay(text) {
-    setDisplay(text);
-  };
-
-  // currently not implemented
-
-  // function changeTemp() {
-  //   if(temp === "temp_c") {
-  //     setTemp("temp_f")
-  //   } else if (temp === "temp_f") {
-  //     setTemp("temp_c")
-  //   }
-  // };
-
   return (
     <>
       <LandingPage
         forecast={forecast}
-        display={display}
-        location={location}
-      
         applyLocation={applyLocation}
-        changeDisplay={changeDisplay}
       />
     </>
   );
 }
 
 export default App;
+
+  // useEffect( () => {
+  //   const fetchForecast = async () => {
+  //     // only three day forecast available. More than 3 days is a paid option.
+  //     const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
+  //     const response = await fetch(forecastURL);
+  //     const forecastJSON = await response.json();
+  //     setForecast(forecastJSON);
+  //     // setTempCentHigh(forecastJSON) 
+  //   };
+  //   fetchForecast();
+  // }, [location]);

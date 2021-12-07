@@ -18,48 +18,96 @@ function Results(props) {
   const [chanceOfSnow, setChanceOfSnow] = useState(["..."])
 
   // *** remove this once everything is working ***
-  useEffect(()=> {
-    console.log("cosole log of props - ", props)
-  })
+  // useEffect(()=> {
+  //   console.log("cosole log of props - ", props)
+  // })
 
-  useEffect(()=> {
-    if(props.forecast.error) {
-      console.log(props.forecast.error.message)
-    } else {
-      setLoading(false);
-      setPlaceName(props.forecast.location.name)
-      // pull the data for all days available at once
-      // setState takes two arguments, the old state and the new state, in the examples below, the old
-      // state is a placeholder so is completely replaced by new state.
-      setTemp_cHigh(prevState =>
-        [
-          props.forecast.forecast.forecastday[0].day.maxtemp_c,
-          props.forecast.forecast.forecastday[1].day.maxtemp_c,
-          props.forecast.forecast.forecastday[2].day.maxtemp_c
-        ]
-      )
-      setTemp_cLow(prevState =>
-        [
-          props.forecast.forecast.forecastday[0].day.mintemp_c,
-          props.forecast.forecast.forecastday[1].day.mintemp_c,
-          props.forecast.forecast.forecastday[2].day.mintemp_c
-        ]
-      )
-      setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
-      setChanceOfRain(prevState => 
-        [
-          props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
-          props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
-          props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
-        ]
-      )
-      setChanceOfSnow(prevState => 
-        [
-          props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
-        ]
-      )
-    }
-  }, [props]);
+  // useEffect(()=> {
+  //   if(props.forecast.error) {
+  //     console.log(props.forecast.error.message)
+  //   } else {
+  //     setLoading(false);
+  //     setPlaceName(props.forecast.location.name)
+  //     // pull the data for all days available at once
+  //     // setState takes two arguments, the old state and the new state, in the examples below, the old
+  //     // state is a placeholder so is completely replaced by new state.
+  //     setTemp_cHigh(prevState =>
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.maxtemp_c,
+  //         props.forecast.forecast.forecastday[1].day.maxtemp_c,
+  //         props.forecast.forecast.forecastday[2].day.maxtemp_c
+  //       ]
+  //     )
+  //     setTemp_cLow(prevState =>
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.mintemp_c,
+  //         props.forecast.forecast.forecastday[1].day.mintemp_c,
+  //         props.forecast.forecast.forecastday[2].day.mintemp_c
+  //       ]
+  //     )
+  //     setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
+  //     setChanceOfRain(prevState => 
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
+  //         props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
+  //         props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
+  //       ]
+  //     )
+  //     setChanceOfSnow(prevState => 
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
+  //       ]
+  //     )
+  //   }
+  // }, [props]);
+
+
+
+  // ***
+  // *** move everything below to state in App.js
+  // ***
+
+  //   useEffect(()=> {
+
+  //   if(props.forecast) {
+    
+  //     setLoading(false);
+
+  //     // .name is undefined
+  //     setPlaceName(props.forecast.location.name) 
+
+  //     // pull the data for all days available at once
+  //     // setState takes two arguments, the old state and the new state, in the examples below, the old
+  //     // state is a placeholder so is completely replaced by new state.
+  //     setTemp_cHigh(prevState =>
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.maxtemp_c,
+  //         props.forecast.forecast.forecastday[1].day.maxtemp_c,
+  //         props.forecast.forecast.forecastday[2].day.maxtemp_c
+  //       ]
+  //     )
+  //     setTemp_cLow(prevState =>
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.mintemp_c,
+  //         props.forecast.forecast.forecastday[1].day.mintemp_c,
+  //         props.forecast.forecast.forecastday[2].day.mintemp_c
+  //       ]
+  //     )
+  //     setDescription(props.forecast.forecast.forecastday[0].day.condition.text)
+  //     setChanceOfRain(prevState => 
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_rain,
+  //         props.forecast.forecast.forecastday[1].day.daily_chance_of_rain,
+  //         props.forecast.forecast.forecastday[2].day.daily_chance_of_rain
+  //       ]
+  //     )
+  //     setChanceOfSnow(prevState => 
+  //       [
+  //         props.forecast.forecast.forecastday[0].day.daily_chance_of_snow
+  //       ]
+  //     )
+  //   } 
+  // }, [props]);
 
   const loadingIcon = <LoadingIcons.TailSpin
             className="current-weather"
