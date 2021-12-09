@@ -48,7 +48,7 @@ function Results(props) {
             </section>
           <p className="wind-and-rain">
             <img src={IconList.Day308} alt="rain icon"></img>: {props.chanceOfRain[0]}%
-            <img src={IconList.Day338} alt="snow icon"></img>: {props.chanceOfSnow[0]}%
+            <img src={IconList.Day338} alt="snow icon"></img>: {props.chanceOfSnow}%
           </p>
         </div>
         <div className="icon-tile">

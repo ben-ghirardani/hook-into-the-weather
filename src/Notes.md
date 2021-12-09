@@ -1,7 +1,3 @@
-GET RUD OF THE LANDING PAGE!!! Just realised it's poitless, the search can on the same page, with placeholder text on first render
-
----------------------------------------------------------------------
-
 Create a Settings page, where user can toggle between celcius and farenheit, etc.
 
 ---------------------------------------------------------------------

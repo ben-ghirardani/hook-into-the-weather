@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
+import APIKey from './APIKey.jsx';
 import LandingPage from './LandingPage/LandingPage.jsx';
 
 function App() {
@@ -13,14 +14,19 @@ function App() {
   const [chanceOfRain, setChanceOfRain] = useState([""]);
   const [chanceOfSnow, setChanceOfSnow] = useState("")
 
+
+  // fetch returns an error if an unknown string is used, eg. shmlump
+  // fetch only recognises network errors, need to specify other ranges for error handling.
+
   useEffect( () => {
     const fetchForecast = async () => {
       setIsLoading(true);
+      // prevent sending a request on initial render
       if(location === null) {
         return
       } else {
         // only three day forecast available. More than 3 days is a paid option.
-        const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=e35ad968908942abac7171042210706&q=${location}&days=10`;
+        const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${location}&days=10`;
         const response = await fetch(forecastURL);
         const forecastJSON = await response.json();
         setForecast(forecastJSON);
