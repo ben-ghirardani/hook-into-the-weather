@@ -48,3 +48,5 @@ reportWebVitals(console.log); commented out of index.js to make console less bus
 what are the rules for naming folders .jsx / .js ?
 
 ---------------------------------------------------------------------
+
+APIKey.js was committed to git so won't .gitignore without removing first.

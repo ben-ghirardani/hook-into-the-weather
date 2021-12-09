@@ -28,11 +28,11 @@
 
 // export default LandingPage;
 
-import React, {useState} from 'react';
+import React from 'react';
 import './LandingPage.css';
 import Search from '../Search/Search.jsx';
 import Results from '../Results/Results.jsx';
-import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong.jsx';
+// import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong.jsx';
 
 function LandingPage(props) {
 

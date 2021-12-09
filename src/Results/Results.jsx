@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Results.css';
 import GetIcon from '../GetIcon/GetIcon.jsx';
 import ForecastTile from '../ForecastTile/ForecastTile.jsx';
@@ -12,11 +12,11 @@ function Results(props) {
   })
 
   const loadingIcon = <LoadingIcons.TailSpin
-            className="current-weather"
-            stroke="#000000"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="xMidYMid meet"
-          />;
+    className="current-weather"
+    stroke="#000000"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid meet"
+  />;
 
 
   // checks if data is available, returns either a loading icon or parses the icon ref
