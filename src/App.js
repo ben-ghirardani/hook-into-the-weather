@@ -18,6 +18,15 @@ function App() {
   // fetch only recognises network errors, need to specify other ranges for error handling.
 
   useEffect( () => {
+    const aTestRun = async () => {
+      const testURL = `http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=London&days=10`;
+      const response = await fetch(testURL);
+      console.log("response - ", response)
+    }
+  aTestRun();
+  })
+
+  useEffect( () => {
     const fetchForecast = async () => {
       setIsLoading(true);
       // prevent sending a request on initial render
