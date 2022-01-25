@@ -13,14 +13,12 @@ function Search(props) {
   function onSubmit(event) {
     event.preventDefault();
     props.applyLocation(inputText);
-    // props.changeDisplay("results");
   }
 
   return <div className="search">
-    Search
     <form onSubmit={onSubmit}>
-      <input onChange={onChange}/>
-      <button type="submit">Submit</button>
+      <input onChange={onChange} placeholder="Enter location" />
+      <button type="submit">Search</button>
     </form>
     
   </div>
